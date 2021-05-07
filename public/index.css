@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 75%;
+}
+
+@media (max-width: 1800px) {
+    .html {
+        font-size: 62.5%;
+    }
+  }
+
+@media (max-width: 1200px) {
+    .html {
+        font-size: 56.25%;
+    }
+  }
+
+@media (max-width: 900px) {
+    .html {
+        font-size: 50%;
+    }
+  }
+
+@media (max-width: 1200px) {
+    .html {
+        font-size: 56.25%;
+    }
+  }
+
+@media (max-width: 1200px) {
+    .html {
+        font-size: 56.25%;
+    }
+  }
+
+body {
+    box-sizing: border-box;
+    font-family: "Sora", sans-serif;
+}
