@@ -1,16 +1,15 @@
 import React from 'react';
-import Input from './components/Input';
-import Header from './components/layout/Header';
+import Header from './components/layout/header/Header';
 
 
 const App: React.FC = () => {
 
 
   return (
-    <div>
+    <React.Fragment>
       <Header />
-      <Input/>
-    </div>
+      {/* <Input/> */}
+    </React.Fragment>
   );
 }
 
