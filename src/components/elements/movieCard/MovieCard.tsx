@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, Wrapper, Title, Poster, Year, NoPhotoIcon } from './style';
+import { Card, Wrapper, Title, Poster, Year, NoPhotoIcon, RouterLink } from './style';
  
 interface MovieCardProps {
     title: string,
@@ -21,8 +20,9 @@ const MovieCard: React.FC<MovieCardProps>= (props) => {
 
 
   return (
-    <Link to={`/${props.id}`}>
+    
       <Card>
+        <RouterLink to={`/${props.id}`}>
           <Wrapper>
             <Title>{props.title}</Title>
             <Year> {props.year}</Year>
@@ -30,8 +30,9 @@ const MovieCard: React.FC<MovieCardProps>= (props) => {
           <Wrapper>
             {image}
           </Wrapper>
+        </RouterLink>
       </Card>
-    </Link>
+    
   );
 }
 

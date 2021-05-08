@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {colors} from "../../utilities/style-variables";
 import {ReactComponent as NoPhoto} from '../../../icons/no-photo.svg';
+import { Link } from 'react-router-dom';
 
 
 
@@ -39,7 +40,9 @@ export const Wrapper = styled.div`
     position: relative;
 `
 
-export const Title = styled.h2``
+export const Title = styled.h2`
+    color: ${colors.black};
+`
 
 export const Poster = styled.img`
     width: 100%;
@@ -49,5 +52,9 @@ export const Year = styled.h3`
     color: ${colors.grey};
     border-bottom: 1px solid ${colors.silver}; 
     margin-bottom: 1rem;
+`
+
+export const RouterLink = styled(Link)`
+    text-decoration: none;
 `
 

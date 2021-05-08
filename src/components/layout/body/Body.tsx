@@ -5,8 +5,7 @@ import { Background } from './style';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
 
 interface BodyProps {
@@ -33,7 +32,7 @@ const App: React.FC<BodyProps> = (props) => {
                 </Background>
             </Route>
             <Route exact path="/:id">
-                <MovieDetails />
+                <MovieDetails {...props}/>
             </Route>
         </Switch>
     </Router>       
