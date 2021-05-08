@@ -1,18 +1,37 @@
 import React from 'react';
-import { Card, Wrapper, Title, Poster, Year } from './style';
+import { Link } from 'react-router-dom';
+import { Card, Wrapper, Title, Poster, Year, NoPhotoIcon } from './style';
  
- 
+interface MovieCardProps {
+    title: string,
+    year: string,
+    id: string,
+    poster: string,
+  };
+  
 
-const MovieCard: React.FC= (props) => {
+const MovieCard: React.FC<MovieCardProps>= (props) => {
+
+  let image;
+  if(props.poster !== "N/A"){
+    image = <Poster src={props.poster}/>
+  } else {
+    image = <NoPhotoIcon />
+  }
+
+
   return (
+    <Link to={`/${props.id}`}>
       <Card>
           <Wrapper>
-            <Title>Titanic<Year> 1997</Year></Title>
+            <Title>{props.title}</Title>
+            <Year> {props.year}</Year>
           </Wrapper>
           <Wrapper>
-            <Poster/>
+            {image}
           </Wrapper>
       </Card>
+    </Link>
   );
 }
 

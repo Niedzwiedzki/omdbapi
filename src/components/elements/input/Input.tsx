@@ -10,7 +10,7 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = (props) => {
   return (
-      <StyledInput value={props.value} onChange={props.inputHandler}/>
+      <StyledInput placeholder="Search title..." value={props.value} onChange={props.inputHandler}/>
   );
 }
 

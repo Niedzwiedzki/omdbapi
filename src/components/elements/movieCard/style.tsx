@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import {colors} from "../../utilities/style-variables";
+import {ReactComponent as NoPhoto} from '../../../icons/no-photo.svg';
+
+
 
 export const Card = styled.div`
     width: 20rem;
@@ -13,27 +16,38 @@ export const Card = styled.div`
     background-color: ${colors.white};
     padding: 1rem;
     margin: 2rem;
+    cursor: pointer;
+    position: relative;
+    min-height: 20rem;
+
+    &:hover {
+        top: -5px;
+        left: -5px;
+    }
 `
+
+export const NoPhotoIcon = styled(NoPhoto)`
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  left:50%;
+  top: 30px;
+  transform: translate(-50%);
+`;
 
 export const Wrapper = styled.div`
-    
-    /* margin: 0.5rem; */
+    position: relative;
 `
 
-export const Title = styled.h2`
-    border-bottom: 1px solid ${colors.silver}; 
-    margin-bottom: 1rem;
-    position:relative;
-`
+export const Title = styled.h2``
 
-export const Poster = styled.img.attrs({src: "https://m.media-amazon.com/images/M/MV5BNDg1Zjc4YzktMmRmZi00ZWJmLWJiYzgtYjg3MmE0OTM1NzY5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"})`
+export const Poster = styled.img`
     width: 100%;
 `
 
-export const Year = styled.span`
+export const Year = styled.h3`
     color: ${colors.grey};
-    font-size: 1.2rem;
-    position: absolute;
-    right: 0;
+    border-bottom: 1px solid ${colors.silver}; 
+    margin-bottom: 1rem;
 `
 

@@ -19,7 +19,6 @@ const Header: React.FC<HeaderProps> = (props) => {
         </Wrapper>
         <Wrapper central={true}>
                 <Input value={props.value} inputHandler={props.inputHandler} />
-                {/* <Options  /> */}
         </Wrapper>
         <Wrapper>
           <Title>OMDB API</Title>

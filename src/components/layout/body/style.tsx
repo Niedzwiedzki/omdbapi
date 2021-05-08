@@ -6,6 +6,8 @@ export const Background = styled.div`
     background-color: ${colors.paleBlue};
     display: flex;
     flex: 1;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+
 `;
 
