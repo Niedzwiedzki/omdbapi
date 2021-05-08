@@ -24,3 +24,10 @@ export const Wrapper = styled.div<HeaderProps>`
     display: flex;
     justify-content: center;
 `;
+
+export const Title = styled.h2`
+    white-space: nowrap;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+`;

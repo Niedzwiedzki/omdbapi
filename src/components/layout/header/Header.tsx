@@ -1,12 +1,16 @@
 import React from 'react';
 
 import Input from '../../elements/input/Input';
-import { StyledHeader, StyledMovieIcon, Wrapper } from './style';
+import { StyledHeader, StyledMovieIcon, Wrapper, Title } from './style';
 
 
+interface HeaderProps {
+  value: string;
+  inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <StyledHeader >
@@ -14,11 +18,11 @@ const Header: React.FC = () => {
             <StyledMovieIcon/>
         </Wrapper>
         <Wrapper central={true}>
-                <Input />
+                <Input value={props.value} inputHandler={props.inputHandler} />
                 {/* <Options  /> */}
         </Wrapper>
         <Wrapper>
-           OMDBAPI
+          <Title>OMDB API</Title>
         </Wrapper>
     </StyledHeader>
   );

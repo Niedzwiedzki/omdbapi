@@ -7,7 +7,7 @@ export const StyledInput = styled.input`
     border-radius: 0.5rem;
     border-width:1px;
     border-style: solid;
-    border-color: ${colors.lightGrey};
+    border-color: ${colors.grey};
     transition: width 0.2s;
 
     &:hover {
