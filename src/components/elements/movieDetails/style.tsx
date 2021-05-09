@@ -41,6 +41,7 @@ export const Wrapper = styled.div<WrapperProps>`
     display: ${props => (props.image ? "flex" : "block")};
     justify-content: center;
     align-items: center;
+    position: relative;
 `;
 
 export const CloseIcon = styled(Cancel)`
