@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const [movies, setMovies] = useState([])
  
   function fetch (search: string) {
-    axios.get(`http://www.omdbapi.com/?s=${search}&apikey=3a542246`)
+    axios.get(`https://www.omdbapi.com/?s=${search}&apikey=3a542246`)
     .then(function (response) {
       if(response.data.Response === "True"){
         setMovies(response.data.Search)
