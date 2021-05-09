@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {colors} from "../../utilities/style-variables";
 import {ReactComponent as Cancel} from '../../../icons/cancel.svg';
 import {ReactComponent as NoPhoto} from '../../../icons/no-photo.svg';
-import { Link } from 'react-router-dom';
 
 interface WrapperProps {
     image?: boolean
@@ -49,6 +48,7 @@ export const CloseIcon = styled(Cancel)`
   height: 3rem;
   margin: 1rem;
   transition: all .2;
+  cursor: pointer;
 
   &:hover{
     width: 3.2rem;
@@ -68,9 +68,6 @@ export const Poster = styled.img`
 export const Header = styled.div`
     display: flex;
     justify-content: space-between;
-`
-export const RouterLink = styled(Link)`
-
 `
 
 export const DataContainer = styled.div`

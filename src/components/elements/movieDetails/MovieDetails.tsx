@@ -7,7 +7,6 @@ import {
     CloseIcon, 
     Title,  
     Poster, 
-    RouterLink, 
     DataContainer, 
     NoPhotoIcon, 
     Data, 
@@ -16,15 +15,10 @@ import {
     Header,
     DataAndYear
 } from './style';
-import { useParams } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
  
-interface ParamsObj {
-    id: string
-}
-
 interface MovieData {
-    Title?: string
+    Title?: string,
     Year?: string,
     Rated?: string,
     Released?: string,
@@ -47,17 +41,21 @@ interface MovieData {
     DVD?: string,
     BoxOffice?: string,
     Production?: string,
-    Website?: string,
+    Website?: string
 }
 
-const MovieDetails: React.FC= () => {
+interface MovieDetailsProps {
+    movieId: string | boolean,
+    setSelectedMovie: () => void
+}
+
+const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
     const [movie, setMovie] = useState<MovieData>({});
     const [loading, setLoading] = useState(false);
-    const params: ParamsObj = useParams();
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://www.omdbapi.com/?i=${params.id}&apikey=3a542246`)
+        axios.get(`https://www.omdbapi.com/?i=${props.movieId}&apikey=3a542246`)
         .then(function (response) {
             setMovie(response.data) 
             setLoading(false)    
@@ -67,7 +65,7 @@ const MovieDetails: React.FC= () => {
           setLoading(false) 
         })
     
-    }, [params.id])  
+    }, [props.movieId])  
     
     let image;
     if(loading){
@@ -89,7 +87,7 @@ const MovieDetails: React.FC= () => {
                         <Title>{movie.Title}</Title>
                         <Value>{movie.Year}</Value>
                     </DataAndYear>
-                    <RouterLink to="/"><CloseIcon/></RouterLink>
+                    <CloseIcon onClick={props.setSelectedMovie}/>
                 </Header>
             </Wrapper>
             <DataContainer>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {colors} from "../../utilities/style-variables";
 import {ReactComponent as NoPhoto} from '../../../icons/no-photo.svg';
-import { Link } from 'react-router-dom';
 
 
 
@@ -54,7 +53,4 @@ export const Year = styled.h3`
     margin-bottom: 1rem;
 `
 
-export const RouterLink = styled(Link)`
-    text-decoration: none;
-`
 

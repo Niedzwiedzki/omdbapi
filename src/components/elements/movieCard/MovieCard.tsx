@@ -1,11 +1,12 @@
 import React from 'react';
-import { Card, Wrapper, Title, Poster, Year, NoPhotoIcon, RouterLink } from './style';
+import { Card, Wrapper, Title, Poster, Year, NoPhotoIcon } from './style';
  
 interface MovieCardProps {
     title: string,
     year: string,
     id: string,
     poster: string,
+    setSelectedMovie: (id: string) => void
   };
   
 
@@ -21,8 +22,7 @@ const MovieCard: React.FC<MovieCardProps>= (props) => {
 
   return (
     
-      <Card>
-        <RouterLink to={`/${props.id}`}>
+      <Card onClick={()=>props.setSelectedMovie(props.id)}>
           <Wrapper>
             <Title>{props.title}</Title>
             <Year> {props.year}</Year>
@@ -30,7 +30,6 @@ const MovieCard: React.FC<MovieCardProps>= (props) => {
           <Wrapper>
             {image}
           </Wrapper>
-        </RouterLink>
       </Card>
     
   );

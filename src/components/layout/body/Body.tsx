@@ -1,13 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MovieCard from '../../elements/movieCard/MovieCard';
 import MovieDetails from '../../elements/movieDetails/MovieDetails';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Background, NoResults } from './style';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-  } from "react-router-dom";
 
 interface BodyProps {
     movies: { 
@@ -21,7 +16,11 @@ interface BodyProps {
     loading: boolean
   };
 
+
+
 const App: React.FC<BodyProps> = (props) => {
+
+    const [selectedMovie, setSelectedMovie] = useState<boolean | string>(false)
   
     let movies;
 
@@ -30,28 +29,22 @@ const App: React.FC<BodyProps> = (props) => {
     } else {
         if(props.movies.length){
             movies = props.movies.map(movie => {
-                return <MovieCard title={movie.Title} year={movie.Year} id={movie.imdbID} poster={movie.Poster}/>
+                return <MovieCard key={movie.imdbID} title={movie.Title} year={movie.Year} id={movie.imdbID} poster={movie.Poster} setSelectedMovie={(id) => setSelectedMovie(id)}/>
             })
         } else {
             movies = <NoResults>No results found</NoResults>
         }
     }
 
-
+    let content;
+    if(selectedMovie) {
+        content = <MovieDetails movieId={selectedMovie} setSelectedMovie={() => setSelectedMovie(false)}/>
+    } else {
+        content = <Background>{movies}</Background>
+    }
 
     return (
-    <Router>
-        <Switch>
-            <Route exact path="/">
-                <Background>
-                    {movies}
-                </Background>
-            </Route>
-            <Route exact path="/:id">
-                <MovieDetails {...props}/>
-            </Route>
-        </Switch>
-    </Router>       
+        content
     );
   }
   
