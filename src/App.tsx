@@ -11,10 +11,13 @@ const App: React.FC = () => {
 
   const [value, setValue] = useState("matrix")
   const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(false)
  
   function fetch (search: string) {
+    setLoading(true)
     axios.get(`https://www.omdbapi.com/?s=${search}&apikey=3a542246`)
     .then(function (response) {
+      setLoading(false)
       if(response.data.Response === "True"){
         setMovies(response.data.Search)
       } else {
@@ -24,6 +27,7 @@ const App: React.FC = () => {
       console.log(response.data)
     })
     .catch(function (error) {
+      setLoading(false)
       console.log(error);
     })
   }
@@ -46,7 +50,7 @@ useEffect(() => {
     return (
       <React.Fragment>
         <Header value={value} inputHandler={inputHandler}/>
-        <Body movies={movies}/>
+        <Body movies={movies} loading={loading}/>
         <Footer />
       </React.Fragment>
     );

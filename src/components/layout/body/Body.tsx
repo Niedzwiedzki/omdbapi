@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieCard from '../../elements/movieCard/MovieCard';
 import MovieDetails from '../../elements/movieDetails/MovieDetails';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Background, NoResults } from './style';
 import {
     BrowserRouter as Router,
@@ -17,19 +18,26 @@ interface BodyProps {
         "Poster": string
         
      }[];
+    loading: boolean
   };
 
 const App: React.FC<BodyProps> = (props) => {
   
     let movies;
 
-    if(props.movies.length){
-        movies = props.movies.map(movie => {
-            return <MovieCard title={movie.Title} year={movie.Year} id={movie.imdbID} poster={movie.Poster}/>
-        })
+    if(props.loading){
+        movies = <CircularProgress />  
     } else {
-        movies = <NoResults>No results found</NoResults>
+        if(props.movies.length){
+            movies = props.movies.map(movie => {
+                return <MovieCard title={movie.Title} year={movie.Year} id={movie.imdbID} poster={movie.Poster}/>
+            })
+        } else {
+            movies = <NoResults>No results found</NoResults>
+        }
     }
+
+
 
     return (
     <Router>
