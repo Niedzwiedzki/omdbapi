@@ -57,7 +57,7 @@ const MovieDetails: React.FC= () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://www.omdbapi.com/?i=${params.id}&apikey=3a542246`)
+        axios.get(`https://www.omdbapi.com/?i=${params.id}&apikey=3a542246`)
         .then(function (response) {
             setMovie(response.data) 
             setLoading(false)    
