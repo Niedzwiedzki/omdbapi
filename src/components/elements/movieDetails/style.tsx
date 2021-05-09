@@ -28,6 +28,9 @@ export const MovieDetailesContainer = styled.div`
     max-height: 100vh;
     position: relative;
     overflow-y: scroll;
+    @media (max-width: 900px) {
+        width: 80%;
+    }
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
