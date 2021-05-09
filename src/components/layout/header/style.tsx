@@ -30,4 +30,7 @@ export const Title = styled.h2`
     display:flex;
     flex-direction:column;
     justify-content: center;
+        @media (max-width: 900px) {
+        display: none;
+    }
 `;

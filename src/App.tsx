@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Header from './components/layout/header/Header';
 import Body from './components/layout/body/Body';
@@ -12,11 +12,7 @@ const App: React.FC = () => {
   const [value, setValue] = useState("")
   const [movies, setMovies] = useState([])
  
-
-  function inputHandler (e: React.ChangeEvent<HTMLInputElement>){
-    setValue(e.target.value);
-    clearTimeout(delayedFetch);
-    
+useEffect(() => {
     function fetch () {
       axios.get(`http://www.omdbapi.com/?s=${value}&apikey=3a542246`)
       .then(function (response) {
@@ -32,9 +28,14 @@ const App: React.FC = () => {
         console.log(error);
       })
     }
-    
+    clearTimeout(delayedFetch);
     delayedFetch = setTimeout(fetch, 1000)
-    
+  }, [value]);
+
+
+
+  function inputHandler (e: React.ChangeEvent<HTMLInputElement>){
+    setValue(e.target.value);
   }
 
     return (

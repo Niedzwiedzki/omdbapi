@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import {colors} from "../../utilities/style-variables";
 import {ReactComponent as Cancel} from '../../../icons/cancel.svg';
+import {ReactComponent as NoPhoto} from '../../../icons/no-photo.svg';
 import { Link } from 'react-router-dom';
+
+interface WrapperProps {
+    image?: boolean
+}
 
 export const StyledMovieDetailes = styled.div`
     position: absolute;
@@ -19,34 +24,82 @@ export const StyledMovieDetailes = styled.div`
 
 export const MovieDetailesContainer = styled.div`
     background-color: ${colors.lightGrey};
-    min-width: 50%;
+    width: 50%;
+    max-height: 100vh;
     position: relative;
+    overflow-y: scroll;
 `;
 
-export const Wrapper = styled.div`
-    border-bottom: 1px solid ${colors.lightGrey};
+export const Wrapper = styled.div<WrapperProps>`
+    border-bottom: 1px solid ${colors.black};
     margin: 1rem;
+    padding-bottom: 0.5rem;
+    min-height: ${props => (props.image ? "20rem" : 0)};
+    display: ${props => (props.image ? "flex" : "block")};
+    justify-content: center;
+    align-items: center;
 `;
 
 export const CloseIcon = styled(Cancel)`
   width: 3rem;
   height: 3rem;
+  margin: 1rem;
+  transition: all .2;
 
+  &:hover{
+    width: 3.2rem;
+    height: 3.2rem; 
+    margin: 0.9rem;
+  }
 `;
 
 
 export const Title = styled.h1`
 `;
 
-export const Year = styled.p`
+export const Year = styled.span`
 `;
 
 export const Poster = styled.img`
     width: 100%;
 `
-export const RouterLink = styled(Link)`
-    text-decoration: none;
-    position: absolute;
-    top: 0;
-    right: 0;
+
+export const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
 `
+export const RouterLink = styled(Link)`
+
+`
+
+export const DataContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 900px) {
+        flex-direction: column;
+    }
+`
+
+export const Column = styled.div`
+    flex: 1
+`
+
+export const NoPhotoIcon = styled(NoPhoto)`
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  left:50%;
+  top: 30px;
+  transform: translate(-50%);
+
+`;
+
+export const Data = styled.h2`
+
+`
+
+export const Value = styled.p`
+
+`
+
+

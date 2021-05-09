@@ -1,7 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { StyledMovieDetailes, MovieDetailesContainer, Wrapper, CloseIcon, Title, Year, Poster, RouterLink } from './style';
+import { 
+    StyledMovieDetailes, 
+    MovieDetailesContainer, 
+    Wrapper, 
+    CloseIcon, 
+    Title, 
+    Year, 
+    Poster, 
+    RouterLink, 
+    DataContainer, 
+    NoPhotoIcon, 
+    Data, 
+    Value,
+    Column,
+    Header
+} from './style';
 import { useParams } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
  
 interface ParamsObj {
     id: string
@@ -36,27 +52,81 @@ interface MovieData {
 
 const MovieDetails: React.FC= () => {
     const [movie, setMovie] = useState<MovieData>({});
+    const [loading, setLoading] = useState(false);
     const params: ParamsObj = useParams();
 
     useEffect(() => {
+        setLoading(true)
         axios.get(`http://www.omdbapi.com/?i=${params.id}&apikey=3a542246`)
         .then(function (response) {
-            setMovie(response.data)     
+            setMovie(response.data) 
+            setLoading(false)    
         })
         .catch(function (error) {
           console.log(error);
+          setLoading(false) 
         })
     
-    }, [params.id])    
-
+    }, [params.id])  
+    
+    let image;
+    if(loading){
+        image = <CircularProgress />
+    } else {
+        if(movie.Poster !== "N/A"){
+        image = <Poster src={movie.Poster}/>
+        } else {
+        image = <NoPhotoIcon />
+        }
+    }
   return (
       <StyledMovieDetailes>
           <MovieDetailesContainer>
-              <RouterLink to="/"><CloseIcon/></RouterLink>
+              
             <Wrapper>
-                <Title>{movie.Title}</Title>
-                <Year>{movie.Year}</Year>
+                <Header>
+                    <Title>{movie.Title}</Title>
+                    <Year>{movie.Year}</Year>
+                    <RouterLink to="/"><CloseIcon/></RouterLink>
+                </Header>
             </Wrapper>
+            <DataContainer>
+            <Column>
+                <Wrapper image={true}>
+                    {image}
+                </Wrapper>
+            </Column>
+            <Column>
+                <Wrapper>
+                    <Data>Director:</Data>
+                    <Value>{movie.Director}</Value>
+                </Wrapper>
+                <Wrapper>
+                    <Data>Writer:</Data>
+                    <Value>{movie.Writer}</Value>
+                </Wrapper>
+                <Wrapper>
+                    <Data>Cast:</Data>
+                    <Value>{movie.Actors}</Value>
+                </Wrapper>
+                <Wrapper>
+                    <Data>Plot:</Data>
+                    <Value>{movie.Plot}</Value>
+                </Wrapper>
+                <Wrapper>
+                    <Data>Country:</Data>
+                    <Value>{movie.Country}</Value>
+                </Wrapper>
+                <Wrapper>
+                    <Data>Awards:</Data>
+                    <Value>{movie.Awards}</Value>
+                </Wrapper>
+                <Wrapper>
+                    <Data>Rated:</Data>
+                    <Value>{movie.Rated}</Value>
+                </Wrapper>
+            </Column>
+            </DataContainer>
           </MovieDetailesContainer>
       </StyledMovieDetailes>
 
