@@ -1,3 +1,14 @@
+# App designed to fetch and display information about movies. 
+
+Home Page:
+
+![home page](https://user-images.githubusercontent.com/43015958/117571755-237cce00-b0d0-11eb-8af9-edd3ea8de336.PNG)
+
+By clicking on the individual movie, you can get more details:
+
+![movie](https://user-images.githubusercontent.com/43015958/117571789-4b6c3180-b0d0-11eb-8a92-f2410c99f066.PNG)
+
+
 
 ### `npm start`
 
