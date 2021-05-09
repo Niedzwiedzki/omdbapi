@@ -9,28 +9,33 @@ let delayedFetch: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000)
 
 const App: React.FC = () => {
 
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState("matrix")
   const [movies, setMovies] = useState([])
  
+  function fetch (search: string) {
+    axios.get(`http://www.omdbapi.com/?s=${search}&apikey=3a542246`)
+    .then(function (response) {
+      if(response.data.Response === "True"){
+        setMovies(response.data.Search)
+      } else {
+        setMovies([])
+      }
+      
+      console.log(response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
 useEffect(() => {
-    function fetch () {
-      axios.get(`http://www.omdbapi.com/?s=${value}&apikey=3a542246`)
-      .then(function (response) {
-        if(response.data.Response === "True"){
-          setMovies(response.data.Search)
-        } else {
-          setMovies([])
-        }
-        
-        console.log(response.data)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-    }
     clearTimeout(delayedFetch);
-    delayedFetch = setTimeout(fetch, 1000)
+    delayedFetch = setTimeout(() => fetch(value), 1000)
   }, [value]);
+
+  useEffect(() => {
+    fetch(value)
+  }, []);
 
 
 

@@ -5,8 +5,7 @@ import {
     MovieDetailesContainer, 
     Wrapper, 
     CloseIcon, 
-    Title, 
-    Year, 
+    Title,  
     Poster, 
     RouterLink, 
     DataContainer, 
@@ -14,7 +13,8 @@ import {
     Data, 
     Value,
     Column,
-    Header
+    Header,
+    DataAndYear
 } from './style';
 import { useParams } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -85,8 +85,10 @@ const MovieDetails: React.FC= () => {
               
             <Wrapper>
                 <Header>
-                    <Title>{movie.Title}</Title>
-                    <Year>{movie.Year}</Year>
+                    <DataAndYear>
+                        <Title>{movie.Title}</Title>
+                        <Value>{movie.Year}</Value>
+                    </DataAndYear>
                     <RouterLink to="/"><CloseIcon/></RouterLink>
                 </Header>
             </Wrapper>

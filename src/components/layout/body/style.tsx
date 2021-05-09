@@ -11,3 +11,8 @@ export const Background = styled.div`
 
 `;
 
+
+export const NoResults = styled.h2`
+
+`;
+

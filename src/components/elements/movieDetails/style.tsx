@@ -57,9 +57,6 @@ export const CloseIcon = styled(Cancel)`
 export const Title = styled.h1`
 `;
 
-export const Year = styled.span`
-`;
-
 export const Poster = styled.img`
     width: 100%;
 `
@@ -93,6 +90,11 @@ export const NoPhotoIcon = styled(NoPhoto)`
   transform: translate(-50%);
 
 `;
+
+export const DataAndYear = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export const Data = styled.h2`
 

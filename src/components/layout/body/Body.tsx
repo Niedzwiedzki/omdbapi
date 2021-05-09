@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieCard from '../../elements/movieCard/MovieCard';
 import MovieDetails from '../../elements/movieDetails/MovieDetails';
-import { Background } from './style';
+import { Background, NoResults } from './style';
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,14 +21,22 @@ interface BodyProps {
 
 const App: React.FC<BodyProps> = (props) => {
   
+    let movies;
+
+    if(props.movies.length){
+        movies = props.movies.map(movie => {
+            return <MovieCard title={movie.Title} year={movie.Year} id={movie.imdbID} poster={movie.Poster}/>
+        })
+    } else {
+        movies = <NoResults>No results found</NoResults>
+    }
+
     return (
     <Router>
         <Switch>
             <Route exact path="/">
                 <Background>
-                    {props.movies.map(movie => {
-                        return <MovieCard title={movie.Title} year={movie.Year} id={movie.imdbID} poster={movie.Poster}/>
-                    })}
+                    {movies}
                 </Background>
             </Route>
             <Route exact path="/:id">
