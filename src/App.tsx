@@ -3,11 +3,9 @@ import axios from 'axios';
 import Header from './components/layout/header/Header';
 import Body from './components/layout/body/Body';
 import Footer from './components/layout/footer/Footer';
-import { createBrowserHistory } from 'history'
 
 
 let delayedFetch: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000)
-const browserHistory = createBrowserHistory();
 const App: React.FC = () => {
 
   const [value, setValue] = useState("matrix")
@@ -15,8 +13,6 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false)
  
   function fetch (search: string) {
-    console.log("hist")
-    console.log(browserHistory)
     setLoading(true)
     axios.get(`https://www.omdbapi.com/?s=${search}&apikey=3a542246`)
     .then(function (response) {

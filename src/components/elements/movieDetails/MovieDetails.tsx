@@ -77,8 +77,16 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
         image = <NoPhotoIcon />
         }
     }
+
+    function close (e: React.MouseEvent<HTMLElement>) {
+        if(e.target === e.currentTarget){
+            props.setSelectedMovie()
+        }
+        
+    }
+
   return (
-      <StyledMovieDetailes>
+      <StyledMovieDetailes onClick={close}>
           <MovieDetailesContainer>
               
             <Wrapper>
